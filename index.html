@@ -93,20 +93,13 @@
     }
 
     .gallery img{
-
       width:100%;
       height:260px;
-
       object-fit:contain;
-
       background:white;
-
       border-radius:20px;
-
       padding:5px;
-
       box-shadow:0 10px 25px rgba(0,0,0,0.2);
-
     }
 
     .videos{
@@ -164,23 +157,18 @@
     }
 
     @keyframes fall{
-
       to{
         transform:translateY(100vh);
       }
-
     }
 
     @keyframes fadeIn{
-
       from{
         opacity:0;
       }
-
       to{
         opacity:1;
       }
-
     }
 
     @media(max-width:600px){
@@ -263,12 +251,12 @@
 
     <div class="videos">
 
-      <video controls>
-        <source src="video1.mp4" type="video/mp4">
+      <video autoplay muted loop playsinline controls>
+        <source src="VID-20260506-WA0034.mp4" type="video/mp4">
       </video>
 
-      <video controls>
-        <source src="video2.mp4" type="video/mp4">
+      <video autoplay muted loop playsinline controls>
+        <source src="IMG_4668.MOV" type="video/mp4">
       </video>
 
     </div>
@@ -314,7 +302,7 @@
 
     <h2>Our Song 🎵</h2>
 
-    <audio controls autoplay loop style="width:100%;">
+    <audio id="bgMusic" autoplay loop controls style="width:100%;">
 
       <source src="music.mp3" type="audio/mp3">
 
@@ -404,6 +392,23 @@
       seconds + "s ";
 
     },1000);
+
+    // FORCE AUTOPLAY MUSIC
+
+    window.addEventListener("load", () => {
+
+      const music =
+        document.getElementById("bgMusic");
+
+      music.play().catch(() => {
+
+        document.body.addEventListener("click", () => {
+          music.play();
+        }, { once: true });
+
+      });
+
+    });
 
   </script>
 
